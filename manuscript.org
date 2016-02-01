@@ -1,0 +1,269 @@
+#+LATEX_CLASS: elsarticle
+#+LATEX_CLASS_OPTIONS: [review, 12pt]
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+OPTIONS: toc:nil ^:{} author:nil
+
+#+latex_header: \usepackage[utf8]{inputenc}
+#+latex_header: \usepackage{fixltx2e}
+#+latex_header: \usepackage{url}
+#+latex_header: \usepackage[version=3]{mhchem}
+#+latex_header: \usepackage{graphicx}
+#+latex_header: \usepackage{float}
+#+latex_header: \usepackage{color}
+#+latex_header: \usepackage{amsmath}
+#+latex_header: \usepackage{textcomp}
+#+latex_header: \usepackage{wasysym}
+#+latex_header: \usepackage{latexsym}
+#+latex_header: \usepackage{amssymb}
+#+LATEX_HEADER: \usepackage[linktocpage,
+#+LATEX_HEADER:   pdfstartview=FitH,
+#+LATEX_HEADER:   colorlinks,
+#+LATEX_HEADER:   linkcolor=blue,
+#+LATEX_HEADER:   anchorcolor=blue,
+#+LATEX_HEADER:   citecolor=blue,
+#+LATEX_HEADER:   filecolor=blue,
+#+LATEX_HEADER:   menucolor=blue,
+#+LATEX_HEADER:   urlcolor=blue]{hyperref}
+# +LATEX_HEADER: \usepackage{lineno}
+# +LATEX_HEADER: \linenumbers
+#+LATEX_HEADER: \biboptions{authoryear}
+
+\begin{frontmatter}
+\title{Comparative microfluidic screening of amino acid salt solutions for post-combustion \ce{CO2} capture}
+
+\author[NETL,cmu]{Alexander P. Hallenbeck}
+\author[NETL,AECOM]{Adefemi Egbebi}
+\author[NETL,AECOM]{Kevin P. Resnik}
+\author[NETL]{David Hopkinson}
+\author[cmu]{Shelley L. Anna}
+\author[NETL,cmu]{John R. Kitchin\corref{cor}}
+\ead{jkitchin@andrew.cmu.edu}
+
+\address[NETL]{National Energy Technology Laboratory, Pittsburgh Pennsylvania, 15236}
+\address[cmu]{Department of Chemical Engineering, Carnegie Mellon University, Pittsburgh, PA 15213}
+\address[AECOM]{AECOM, Pittsburgh, PA, 15236}
+
+\cortext[cor]{Corresponding author}
+
+\begin{abstract}
+The CO$_{2}$ absorption capacity and rate of aqueous solutions of MEA and the potassium salts of glycine, taurine, proline, and lysine were compared in a microfluidic device. These properties were measured by tracking the volume change of an entrained CO$_{2}$ gas plug as it traveled through a microfluidic channel. The potassium salt of lysine, which contains two primary amine functional groups, exhibited the highest rich CO$_{2}$ loading, \textgreater 50\% higher than MEA. The salts of glycine, and taurine exhibited similar absorption capacity to MEA, and the salt of proline exhibited the lowest absorption capacity. The trend in absorption capacities of the potassium salt of lysine and MEA was also observed in a set of breakthrough CSTR experiments. Raman spectroscopy was used to analyze the absorbent solutions before exposure to CO$_{2}$ as well as the reactor effluent. Spectral features of carbamate, carbonate, and bicarbonate were identified in the effluent spectra. The effectiveness of the microfluidic reactor as a solvent volume and time efficient screening tool is demonstrated. The results suggest further work should be done to evaluate the efficacy of the alkali salt of lysine as a post-combustion CO$_{2}$ capture absorbent as it has potential to match or possibly improve upon the CO$_{2}$ loading of MEA while offering advantages such as low toxicity and lower volatility.
+\end{abstract}
+
+\begin{keyword}
+Lysine, Segmented flow, Raman, Microfluidic
+\end{keyword}
+\end{frontmatter}
+
+
+* Introduction
+The combustion of fossil fuels such as coal, oil, and natural gas for energy is responsible for a significant fraction of CO_{2} emissions cite:hoeven-2013-co-emiss. Specifically, 38% of the total U.S. CO_{2} emissions in 2012 were due to electricity generation cite:epa-2014-inven-u. Post-combustion carbon capture and sequestration is a potential approach to mitigating the impact of these CO_{2} emissions that would allow the current infrastructure to remain largely intact while continued research into alternative fuels and energy production is done cite:metz-2005-special-repor.
+
+The most mature technology for post-combustion CO_{2} capture is absorption via an aqueous solution of 30 wt% monoethanolamine (MEA) solution using an absorber and stripper to capture CO_{2} cyclically cite:rochelle-2009-amine-scrub. Amine solvents, including MEA, react reversibly and exothermically with CO_{2} to form an amine-CO_{2} complex. This complex is typically either a carbamate or a bicarbonate depending on the structure of the amine, with primary and secondary amines preferring the formation of carbamate cite:reynolds-2012-towar-commer. While MEA is the industry standard due to its fast reaction kinetics and high CO_{2} capacity, there are several drawbacks to its use, including a high regeneration energy cost, solvent loss to oxidative degradation cite:uyanga-2007-studies-so2 and volatility cite:voice-2011-oxidat-co2, as well as its high toxicity and corrosivity. Consequently, a major focus of current research is alternative aqueous-based solvents containing piperazine cite:rochelle-2011-aqueous-co2, promoted carbonate solutions cite:cullinane-2004-carbon,ghosh-2009-absor,knuutila-2009-kinet-co2, and aqueous amino acid salt solutions cite:jockenhoevel-2009-devel-econom,holst-2009-kinet,paul-2012-kinet,sanchez-2013-concep-desig among others. An alternative approach that has  been investigated for a non-aqueous solvent include amine-functionalized ionic liquids cite:sistla-2014-carbon.
+
+Great interest has been generated in aqueous solutions of amino acid salts as a class of post-combustion CO_{2} capture solvents because they have  many favorable characteristics. Dissolved amino acids at neutral pH exist in the form of a zwitterion as seen in equation eqref:eqnx.
+
+\begin{equation}
+\ce{H_{3}^{+}N-CHR-COO^{-}}\label{eqnx}
+\end{equation}
+
+\noindent Consequently, the amine group of the amino acid is protonated and unavailable to react with CO_{2}. However, deprotonating the amine group with a metal hydroxide to form a salt (equation eqref:eqny) allows CO_{2} to react with the amino acid along amine-CO_{2} reaction pathways.
+
+\begin{equation}
+\ce{H_{2}N-CHR-COO^{-}  M^{+}}\label{eqny}
+\end{equation}
+We refer to the salt of lysine as lysinate (LYS), the salt of glycine as glycinate (GLY), the salt of taurine as taurinate (TAU), and the salt of proline as prolinate (PRO). Potassium is the most commonly reported cation for CO_{2} capture studies cite:lim-2012-absor-co2.
+
+Aqueous amino acid salt solutions have very low volatility (of the amino acids) and high surface tension due to their ionic nature. They react with CO_{2} through the same amine functional groups present in alkanolamines. They have been shown to exhibit excellent oxidative and thermal stability as well as similar capture capacity and kinetics to alkanolamines cite:hook-1997-inves-some,portugal-2007-charac,huang-2013-therm-co2. Additionally, they are naturally abundant and the R-group presents tunability to the solvent selection. Consequently many investigations have been carried out to assess the efficacy of amino acid salt solutions for CO_{2} capture.
+
+Holst et. al. investigated the kinetics of several aqueous solutions of amino acid salts including those of 6-aminohexanoic acid, beta-alanine, l-arginine, l-glutamic acid, dl-methionine, l-proline, and sarcosine cite:holst-2009-kinet. Kinetic experiments were carried out in a closed stirred-cell reactor at a temperature of 298 K and an amino acid salt concentration of 0.5 M. The potassium salts of l-proline and sarcosine were found to be most promising due to their fast kinetics and low pKa.
+
+Kumar et. al. measured the kinetics of the reaction of CO_{2} with aqueous potassium salts of taurine and of glycine using a stirred cell reactor with a flat gas-liquid interface cite:kumar-2003-kinet-co2. They found that the experimental data could be explained with the same zwitterion mechanism used to interpret the kinetics of CO_{2} absorption with primary alkanolamines despite a few differences in kinetic behavior. Unlike for alkanolamines, the partial reaction order in amino acid salt changes from one at low salt concentration to approximately 1.5 at high salt concentration (as high as 3 M). Additionally the forward second order rate constant of the zwitterion mechanism was found to be significantly higher for the amino acid salts than for alkanolamines with similar basicity. Lastly, it was also found that water makes a larger contribution to the deprotonation of the zwitterion in the case of amino acids in comparison to alkanolamines.
+
+More recently, the kinetics of CO_{2} absorption in an aqueous solution of potassium prolinate were measured with a wetted wall reactor cite:paul-2012-kinet. In this work, the authors reported higher second order rate constants for this solvent than for some alkanolamines, and for some other amino acid salts.
+
+Aqueous amino acid salt solutions have also been investigated both experimentally and computationally at the process scale. Siemens has developed a post-combustion CO_{2} capture process based on the use of an amino acid salt solution cite:jockenhoevel-2009-devel-econom. Process models were used to optimize the CO_{2} capture process and predicted an efficiency loss of only 9% in comparison to a standard coal-fired plant cite:jockenhoevel-2009-devel-econom. A pilot plant was commissioned to start process validation and solvent optimization in August, 2009 cite:jockenhoevel-2009-devel-econom. Knuutila et. al. also investigated the potassium salt of sarcosine with a series of pilot plant experiments and simulations for a salt concentration of 3.5 M. Their results indicated a high absorption rate and high energy requirement for the amino acid salt solution in comparison with 30 wt% MEA cite:knuutila-2011-post-co2.
+
+One group of amino acids which has received limited attention are the amino acids with basic side-chains, such as histidine, arginine, and lysine. These amino acids contain additional nitrogen group(s) which depending on the solution conditions (pH) can participate in the reactions with CO_{2} increasing the rich CO_{2} loading of the solvent. Past work has shown for the case of arginine that the rich CO_{2} loading is on order 1 mole CO_{2} per mole of arginine, but at the expense of a higher lean CO_{2} loading and consequently a working capacity not significantly different from single amine containing molecules such as MEA cite:song-2012-carbon. Lysine is another amino acid which has only been included in one previous study that showed it to be very promising to replace and improve upon MEA cite:lerche-2012-co-captur. Consequently the present work aims to further compare the CO_{2} absorption of LYS with MEA and three other amino acid salts that have received extensive attention: GLY, PRO, and the synthetic amino acid salt: TAU. The structures of each amino acid can be seen in Figure ref:figstr.
+#+caption: Molecular structure of a) Glycine, b) Taurine, c) Proline, d) Lysine. \label{figstr}
+#+attr_latex: :placement [H]
+[[./figures/aminoacidstructures.png]]
+
+Multi-phase microfluidic reactors have recently garnered much attention for the study of rapid chemical reactions. Microfluidic devices have been used in several recent studies on CO_{2} physical solubility and mass transfer rate in pre-combustion capture solvents cite:abolhasani-2012-autom,sun-2011-dissol,m.-model-predic,lefortier-2012-rapid-co2 as well as CO_{2} absorption by amines cite:li-2012-microf-study,zhu-2014-taylor-co2,yang-2014-mass,voicu-2014-microf-studies,ye-2012-proces-charac. Absorption at microfluidic length-scales occurs through a well-defined two-phase interface and with a high surface area to volume ratio. In addition to the low, 1 mL or less, volume requirements, microfluidic experiments also significantly reduce the time and complexity of CO_{2} absorption experiments over conventional methods such as wetted-wall column and stirred cell reactor experiments. Consequently microfluidics is a very appropriate tool for screening new CO_{2} absorbent solutions. The present work will determine the CO_{2} uptake of the aqueous amino acid salt solutions through the time dependent decrease in the volume of entrained CO_{2} plugs in a microfluidic channel.
+* Materials and Methods
+Amino acids were purchased from Sigma Aldrich at purities of at least 98.5%, potassium hydroxide was purchased with a purity of 99.9%,and MEA was purchased with a purity of 99%. All reagents were used without further purification.  Deionized water was used for all solutions. Amino acid salt solutions were prepared by neutralizing the amino acid with an equimolar amount of potassium hydroxide. The actual concentration of the aqueous amino acid salt was verified through titration with a 12.1 N HCl solution (Fischer Scientific) using an Orion 4star pH meter. The concentrations of all solutions were 0.50 M with the exception of potassium lysinate which was 0.53 M. CO_{2} gas was supplied from a cylinder (Matheson gas) at a 99.995% purity.
+** Microfluidic apparatus
+Microfluidic experiments were carried out with a commercially available all-glass microreactor from Micronit (product code: FC-R150.676.2_PACK). The reactor contains two inlets, a Y-junction, and a serpentine channel. All inlet and outlet connections were made with the Fluidic Connect Pro chip holder purchased from Micronit (product code: FC_PRO_CH4515). The flow rate of liquid into one inlet was controlled with a Harvard apparatus phd2000 syringe pump and gas was supplied to the other inlet with a ControlAir type 550x electronic to pneumatic transducer with a supply pressure range of 35 to 100 psig and an outlet pressure range of 0 to 30 psig. Experiments were conducted on a light table with a Nikon Motion pro-x high speed camera. The gas pressure was kept constant at 1.7 atm for all experiments and the liquid flow rate was adjusted in each experiment to obtain a steady production of entrained gaseous plugs at the Y-junction of the microfluidic device as can be seen in Figure ref:fig1.
+#+caption: Example image used for analysis of 0.50 M  K^{+}GLY^{-}. \label{fig1}
+#+attr_latex: :placement [H]
+[[./figures/05KGLYexampleflow.png]]
+
+In each experiment a video was acquired with a frame rate of 500 Hz. This frame rate is sufficiently high to allow for the tracking of the size of an individual gas plug through time as it travels through the reactor. In order to measure the amount of absorbed CO_{2}, the length of an individual gas plug was measured as the gas plug traveled along the reactor channel using the ImageJ software and can be seen in Figure ref:fig2. The gas plug was selected to maintain a constant adjacent liquid slug length (approximately 350 \mu{}m) between all experiments.
+#+caption: Plug length vs distance used for analysis of 0.50 M  K^{+}GLY^{-} with exponential fit for determining initial plug length. The initial gas plug length was determined to be 2276 \mu{}m. \label{fig2}
+#+attr_latex: :placement [H] :width 3in
+#+attr_org: :width 300
+[[./figures/GLYpluglengths.png]]
+
+The initial gas plug length was determined by extrapolating the gas plug length to the y-junction through an exponential fit as can be seen in Figure ref:fig2. The volume of a gas plug was calculated assuming a plug consisting of a cylinder and two hemispherical endcaps. Previous work cite:li-2012-microf-study with the same microreactor determined the hydraulic diameter of the microchannel to be 125 \mu{}m through confocal fluorescence microscopy. We assumed the hydraulic diameter of each gas plug to be 121 \mu{}m to account for the thin liquid film between the plug and reactor walls as was done in Li et. al. The moles of absorbed CO_{2} was then determined by applying the ideal gas law based on the measured ambient temperature (294-296K). The precision of the resulting concentration data is within 0.02 M based on propogating the precision of the plug and slug length measurements.
+
+** Raman Spectroscopy
+Raman spectroscopy was carried out with the prepared absorbent solutions prior to microfluidic experiments and with a sample of the microreactor effluent following each microfluidic experiment. Raman spectra were acquired with a Horiba LabRamHR spectrometer using a Spectra Physics 532 nm Nd:Yag laser with an operating power of 0.2 W as the excitation source. Spectra were taken using an Olympus 50xLWD objective and were recorded as an average of 10 three second exposures over each spectral range. Prior to each set of measurements, the spectrometer was calibrated using a silicon standard.
+
+** CSTR
+The CO_{2} absorption testing unit is a continuously stirred reactor vessel (300 ml EZE-Seal Stirred Reactor from Autoclave Engineers). It is equipped with a set of mass flow controllers (MFCs) allowing for control of up to five different gases/mixtures, which can be blended and directed into a single gas inlet port at the top of the reactor. Gases are introduced into the reactor via a diptube connected to the gas inlet port. Solvent is pre-loaded into the vessel, where it is continuously stirred with the impeller for adequate mixing and mass transfer. Gaseous products exit the reactor at the top through a single gas outlet port and immediately directed into a cold trap to condense out the vapor leaving the reactor with the gases. After the cold trap, the gas stream passes through a back pressure regulator (BPR) prior to being vented. A slipstream of the gas stream is constantly being withdrawn via a capillary connection for gas analysis by a Dycor\textsuperscript{\textregistered} series Dymaxion Residual Gas Analyzer (RGA) from AMETEK.
+
+For equilibrium CO_{2} absorption measurements, the solvent is loaded into the vessel and sealed. N_{2} gas is briefly directed into the vessel to purge air/O_{2} from the system. The vessel is then isolated while the solvent is constantly stirred as it is gradually brought up to the 40 \(^{\circ}\)C absorption temperature with the heater. At the same time the gas feed, now bypassing the vessel, is changed to 14% CO_{2}/N_{2} at the desired flow rate to establish steady flow as measured by the RGA. When both the absorption temperature and flow rate is attained, the vessel is brought back online to start the absorption test. The solvent is saturated and equilibrium reached when the concentration of gas exiting the vessel is equal to the initial concentration as recorded by the RGA. RGA data is reduced and numerically integrated to calculate the amount of CO_{2} absorbed by the solvent.
+
+* Results
+** Microfluidic experiments
+Microfluidic absorption experiments were carried out at ambient temperature with a gas delivery pressure of 1.7 atm for MEA and GLY, TAU, PRO at a concentration of 0.50 M and for LYS at a concentration of 0.53 M. The size of a specific CO_{2} gas plug was monitored as a function of time starting at the Y-junction and the molar concentration of absorbed CO_{2} in the adjacent liquid slugs was calculated as described above. The resulting concentration of absorbed CO_{2} can be seen in Figure ref:figu for all of the studied solutions.
+#+caption: Concentration of absorbed CO_{2} during microfluidic experiments as a function of time. \label{figu}
+#+attr_latex: :placement [H] :width 3in
+#+attr_org: :width 300
+[[./figures/summaryplot.png]]
+Since the partial pressure of CO_{2} is significantly lower in the typical post-combustion flue gas, the physical solubility of CO_{2} in the amine solution is typically negligible. Consequently, the reacted CO_{2} loading was calculated by approximating the physical solubility of CO_{2} in the amine or amino acid salt solution with that of water. The CO_{2} loadings after subtracting the physical solubility can be seen below in Table ref:tabler.
+#+caption: Maximum reacted CO_{2} loadings during MF experiments.
+#+TBLNAME: tabler
+#+attr_latex: :placement [H]
+| Solvent | CO_{2} loading (mol CO_{2}/mol Am) |
+|---------+------------------------------------|
+| LYS     |                               0.70 |
+| MEA     |                               0.46 |
+| GLY     |                               0.43 |
+| TAU     |                               0.43 |
+| PRO     |                               0.34 |
+
+As an arbitrary metric for comparing the absorption rates, the time to reach 90% of the above maximum CO_{2} loadings was measured and can be seen in Table ref:tablei.
+#+caption: Time to reach 90% of maximum CO_{2} loading during MF experiments.
+#+TBLNAME: tablei
+#+attr_latex: :placement [H]
+| Solvent | t (s)                              |
+|---------+------------------------------------|
+| MEA     |                               0.30 |
+| GLY     |                               0.34 |
+| PRO     |                               0.34 |
+| TAU     |                               0.37 |
+| LYS     |                               0.47 |
+Another metric for comparing the absorption rates is to compare the initial absorption flux as calculated over the initial 0.02 s of the absorption assuming the mass transfer area is approximately the area of the endcaps of the gas plug.
+#+caption:Initial Absorption flux during MF experiments.
+#+TBLNAME: tableq
+#+attr_latex: :placement [H]
+| Solvent | Initial absorption flux (mol*m^{-2}*s^{-1}) |
+|---------+---------------------------------------------|
+| LYS     |                                        0.52 |
+| MEA     |                                        0.48 |
+| PRO     |                                        0.35 |
+| GLY     |                                        0.32 |
+| TAU     |                                        0.25 |
+** CSTR
+In order to determine the effectiveness of the microfluidic experiments in predicting the trends in CO_{2} loading and rate at larger macroscale and industrially relevant volumes and solvent concentrations a set of equilibrium CO_{2} absorption experiments were conducted with a 300 mL CSTR. The equilibrium CO_{2} absorption capacities of potassium lysinate and MEA were determined from integration of the CO_{2} breakthrough curves. Samples of the same composition as in the microfluidic experiments were measured as well as a 30 wt% MEA solution and 1.48M(or equivalently 70 wt% H_{2}O) potassium lysinate in order to compare the two solutions with a constant weight fraction of water. Experiments were conducted at 313.15 K and from a 10 vol% CO_{2} gas stream for the low solvent concentration experiments and 14 vol% CO_{2}, balance N_{2}, gas stream for the high solvent concentration experiments. The cumulative amount of absorbed CO_{2} throughout each experiment can be seen in Figure ref:figcstr1 (0.5M), and Figure ref:figcstr2 (70wt% water).
+#+caption: Cumulative CO_{2} loading throughout CSTR breakthrough for 0.5M K^{+}LYS^{-} and MEA. \label{figcstr1}
+#+attr_latex: :placement [H]
+[[./figures/lowcstrcompar.png]]
+#+caption: Cumulative CO_{2} loading throughout CSTR breakthrough for 1.48M K^{+}LYS^{-} and 30 wt%  MEA. \label{figcstr2}
+#+attr_latex: :placement [H]
+[[./figures/highcstrcompar.png]]
+A comparison of the equilibrium absorption capacities can be seen in Table ref:tablecstr1
+#+caption: Equilibrium CO_{2} loadings during CSTR experiments.
+#+TBLNAME: tablecstr1
+#+attr_latex: :placement [H]
+| Solvent   | CO_{2} loading (mol CO_{2}/mol MEA/Lysine) | CO_{2} loading (mmol/g solution) |
+|-----------+--------------------------------------------+----------------------------------|
+| 0.53M LYS |                                       1.32 |                             0.68 |
+| 0.53M MEA |                                       0.70 |                             0.37 |
+| 1.48M LYS |                                       1.19 |                             1.68 |
+| 30wt% MEA |                                       0.53 |                             2.63 |
+The viscosities of the 1.48M LYS solution and the 30 wt% MEA solution was determined by a RheoSense micro viscometer. The viscosities were nearly identical as can be seen in Tables ref:tablevisc --- ref:tableviscMea
+#+caption: Viscosity of 1.48M Potassium Lysinate.
+#+TBLNAME: tablevisc
+#+attr_latex: :placement [H]
+| Temperature (K) | Viscosity (mPas) |
+|-----------------+------------------|
+|          293.14 |            3.078 |
+|          293.13 |            3.069 |
+|          303.29 |             2.27 |
+|          313.21 |            1.723 |
+
+#+caption: Viscosity of 30 wt% MEA.
+#+TBLNAME: tableviscMea
+#+attr_latex: :placement [H]
+| Temperature (K) | Viscosity (mPas) |
+|-----------------+------------------|
+|          293.17 |            3.159 |
+|          293.16 |            3.161 |
+|          303.22 |            2.277 |
+|          313.03 |            1.751 |
+These values are consistent with previously reported viscosity measurements of 30 wt% MEA solution cite:q2003-ethan.
+
+** Raman Spectroscopy
+Raman spectra for each absorbent solution both before and after absorbing CO_{2} in the microfluidic reactor can be seen below in Figures ref:figmb --- ref:figla.
+#+caption: Raman Spectra for MEA. \label{figmb}
+#+attr_latex: :placement [H]
+[[./figures/MEAMFRaman.png]]
+
+#+caption: Raman Spectra for GLY. \label{figgb}
+#+attr_latex: :placement [H]
+[[./figures/GLYMFRaman.png]]
+
+
+#+caption: Raman Spectra for TAU. \label{figtb}
+#+attr_latex: :placement [H]
+[[./figures/TAUMFRaman.png]]
+
+
+#+caption: Raman Spectra for PRO.  \label{figpb}
+#+attr_latex: :placement [H]
+[[./figures/PROMFRaman.png]]
+
+
+#+caption: Raman Spectra for LYS. \label{figla}
+#+attr_latex: :placement [H]
+[[./figures/LYSMFRaman.png]]
+
+* Discussion
+Microfluidic absorption experiments provide a rapid, low-volume, and direct quantitative comparison of the CO_{2} absorption capacity and absorption rate between several absorbent solutions. The results of this set of experiments shows that the potassium salt of lysine absorbs more CO_{2} than the potassium salts of glycine, taurine, or proline as well as more than MEA at the same molar absorbent concentration. This result suggests that the additional primary amine in lysine's side chain contributes additional CO_{2} capacity through additional reaction with CO_{2} over the solutions containing a solitary amine group per absorbent molecule. However, comparison between lysine and glycine shows that doubling the number of primary amine groups in the amino acid molecule results in less than a doubling in CO_{2} uptake. This is not surprising due to the high pKa (10.53) of the lysine side chain, so as CO_{2} is absorbed the decrease in solution pH (initially 11.58) can result in protonation of some of the amine groups and decrease the availability for reaction with CO_{2}. Never the less the potassium salt of lysine has exhibited a rich CO_{2} loading \textgreater 50% greater than MEA. Consequently we suggest that lysine should receive more attention than the small number of studies cite:lerche-2012-co-captur it has been included in to date. The potassium salts of glycine and taurine exhibited similar capacity to MEA, while prolinate exhibited the lowest CO_{2} capacity. This suggests that the secondary amine group of proline does not lead to an increase in the amount of bicarbonate versus carbamate formed over the cases of the primary amines. Steric hindrance effects may be a contributing factor to the lower rich CO_{2} loading of PRO.
+
+While LYS exhibited a slightly longer time to reach its maximum CO_{2} loading than the other solutions in this study, the initial absorption rate of LYS was significantly faster than the other amino acid salts and slightly higher than MEA. Which solvent would exhibit the fastest absorption rate in an absorber would vary based on the residence time of CO_{2} and the solvent. Certainly at very low residence times, LYS would be an attractive option. The absorption fluxes measured using the microfluidic apparatus are significantly faster than those reported for wetted-wall column experiments (on the order 10^{-5} to 10^{-3} mol/m^{2}s) cite:rochelle-2011-aqueous-co2. However that the flux is significantly greater at the microfluidic length scale is not surprising and consistent with past CO_{2} absorption results at similar microfluidic length scales that report fluxes in the range of 0.98-1.8 mol/m^{2}s depending on the gas space velocity cite:ye-2012-proces-charac. This highlights the need to limit the comparison of absolute absorption rates to data collected with the same experimental setup.
+
+LYS also exhibited a higher equilibrium CO_{2} absorption capacity than MEA in the CSTR experiments. At the same solvent concentrations as in the microfluidic experiments, 1.32 mol CO_{2}/mol lysine was absorbed compared with only 0.68 mol CO_{2}/mol MEA. These capacities were measured at a higher (40 vs 23 \(^{\circ}\)C) temperature and lower CO_{2} gas pressure than in the microfluidic experiments. The fact that both capacities were found to be significantly higher in the CSTR experiment could be an indication that CO_{2} plug volume reduction in the microfluidic reactor is partly controlled by mass-transfer. As is the case with comparing the absorption rates, the absolute values of the CO_{2} loadings should only be compared between solutions with the same testing method. However, it is most important that the qualitative trend in the absorption capacity between different solvents (LYS and MEA) that was observed in the microfluidic experiment was also observed in the CSTR experiments. Consequently, the microfluidic experiments described in this work provide a volume and time-efficient means to screen several solvents and identify which one's are the most promising candidate based on absorption capacity prior to more time and volume intensive testing, such as in a CSTR, being done. This advantage is particularly relevant for novel solvents that may be costly to produce in liter-scale quantities prior to their CO_{2} capture potential being experimentally investigated.
+
+The results in Table ref:tablecstr1 shows that the trends in CO_{2} absorption capacity is dependent on whether the solvents are compared on a constant moles of amine/amino acid basis or constant mass fraction of water basis. Due to the higher molecular weight of lysine vs. MEA, when the molar concentration of lysine and MEA are constant (0.53M) LYS absorbs more CO_{2} than MEA, while when the combined lysine/koh mass fraction is kept at 30 wt% to match the MEA benchmark, MEA absorbs more CO_{2} than LYS. In order to match the CO_{2} absorption capacity of 30 wt% MEA, a higher concentration than 1.48M of potassium lysinate is needed. At higher concentrations, precipitation may introduce additional complexity and to determine the overall effect of replacing MEA with LYS an in-depth analysis would have to be done to take in account the benefits of LYS over MEA(lower volatility, lower corrosivity, lower toxicity, higher CO_{2} absorption at same molar concentration of solvent) as well as the drawbacks (higher molecular weight, precipitation of solids). While LYS certainly presents several advantages over MEA, this work also suggests further research into all these competing factors as well as further thermodynamic information regarding regeneration should be done.
+
+Inspection of the Raman spectra of the MEA and amino acid salt solutions before and after CO_{2} absorption confirms the occurrence of a reaction and the formation of carbamate, bicarbonate, and carbonate as products. For the primary amines in this study, the occurrence of reaction between CO_{2} and the primary amine group is confirmed by the disappearance of the peak at 3310-3320 cm^{-1} which is indicative of N-H stretching in the NH_{2} species. In MEA solutions, carbamate, bicarbonate, and carbonate result in peaks at 1162 cm^{-1}, 1017 cm^{-1}, and 1067 cm^{-1} respectively cite:samarakoon-2013-equil-mea. All three of these peaks are absent in the pre-MF experiment spectrum for MEA and present in the post-MF experiment spectrum. While peaks in the same region appear in some of the post-MF experiment spectra for the amino acid salts, peaks in other areas appear as well. Post-MF GLY exhibits new peaks at 914 and 1445 cm^{-1} in addition to a broad peak (1045 cm^{-1}) in the region of bicarbonate/carbonate in MEA and a 1175 cm^{-1} peak in the region of carbamate in MEA. Post-MF TAU does not exhibit new peaks in the same region as bicarbonate/carbonate/carbamate in MEA or GLY but exhibits only two new peaks at 955, in the expected range of 930-1100 cm^{-} for NH_{3}^{+} rocking and/or the C-N stretch for NH_{3}^{$+$} cite:2001-infrar-raman, and 1340 cm^{-1}. A peak in the similar range of 1340-1360 cm^{-1} also appears for the case of post-MF PRO and is in a similar region as the CO symmetric stretch of bicarbonate cite:wen-1995-ammon-carbon,frantz-1998-raman. The spectrum of prolinate undergoes considerable changes in peak positions as a result of CO_{2} absorption and is consequently difficult to interpret further. LYS exhibits very similar new Raman peaks in the post-MF experiment spectrum as MEA and GLY with peaks in the 1010-1070 cm^{-1} region indicative of C-OH stretching in bicarbonate and the symmetric stretch of carbonate cite:frantz-1998-raman as well as at 1130 cm^{-1} indicative of carbamate. The shift of the higher peak from 1162 cm^{-1} in MEA and 1175 cm^{-1} in GLY to 1130 cm^{-1} in LYS may indicate a lower bond energy for carbamate in LYS and consequently an equilibrium that favors bicarbonate/carbonate more for the case of LYS than for MEA or GLY.
+
+* Conclusions
+The CO_{2} absorption capacity and rate of four amino acid salts was evaluated and compared with MEA through analysis of segmented flow in a microfluidic channel. The CO_{2} loading of the absorbent solutions was calculated from the decrease in volume of an entrained CO_{2} plug as it traveled through the microfluidic reactor using image analysis. The potassium salt of lysine exhibited the highest rich CO_{2} loading, \textgreater50% higher than MEA. The potassium salts of glycine and taurine exhibited similar rich loadings to MEA, while the potassium salt of proline exhibited the lowest rich CO_{2} loading. The CO_{2} absorption capacity of the potassium salt of lysine was then further investigated and compared with MEA in a CSTR.The CSTR results showed that when the molar concentration of MEA and LYS was kept constant at 0.53M, the LYS solution exhibited a \textgreater90% higher CO_{2} absorption capacity than MEA. However, when the solvents were compared at a constant mass fraction instead of constant molar concentration, MEA absorbed more CO_{2} due to its lower molecular weight than LYS. Consequently, the effect of differing molecular weights should always be considered when designing experiments to screen the CO_{2} absorption capacity of several absorbents.  Raman spectroscopy was used to confirm the occurrence of a reaction and to identify the reaction products. The Raman spectrum of each absorbent solution before the microfluidic experiment was compared with the absorbent solution after exiting the microfluidic reactor. Spectral features consistent with the formation of bicarbonate, carbonate and carbamate were found for all solutions. The results of this work suggest that the potassium salt of lysine should be further investigated as a post-combustion CO_{2} capture solvent since it would enable a greater amount of CO_{2} to be absorbed for the same moles of absorbent molecule than is the case for MEA, and it has been largely overlooked in previous amino acid salt solution studies. Due to lysine's large molecular weight, the combined mass fraction of lysine/koh would need to be higher than the 30% that is customary for MEA in order to achieve the same rich CO_{2} loading. Determining the optimal capture solution composition for a potassium lysinate process is beyond the scope of the present work. Future investigation of LYS should include regeneration studies, thermal conductivity measurements, and the effect of precipitation in particular. This work also highlights the experimental efficiency and speed of microfluidic reactors as screening tools for evaluating CO_{2} absorbents. Trends in CO_{2} absorption capacity consistent with those observed in a CSTR can be determined with less than a mL and in substantially shorter time by analyzing images of CO_{2} plug dissolution in segmented flow in a microfluidic channel.
+
+* Acknowledgment
+The authors would like to acknowledge Chris Nelson for help in operating the optical hardware and software used in the microfluidic experiments.
+The authors would like to acknowledge Elliot Roth for conducting the viscosity measurements of the 30 wt% MEA and Potassium Lysinate solutions.
+The authors would like to acknowledge Nicholas Siefert for insightful discussion and advice in planning the CSTR experiments.
+
+Disclaimer: "This report was prepared as an account of work sponsored
+by an agency of the United States Government. Neither the United
+States Government nor any agency thereof, nor any of their employees,
+makes any warranty, express or implied, or assumes any legal liability
+or responsibility for the accuracy, completeness, or usefulness of any
+information, apparatus, product, or process disclosed, or represents
+that its use would not infringe privately owned rights. Reference
+herein to any specific commercial product, process, or service by
+trade name, trademark, manufacturer, or otherwise does not necessarily
+constitute or imply its endorsement, recommendation, or favoring by
+the United States Government or any agency thereof. The views and
+opinions of authors expressed herein do not necessarily state or
+reflect those of the United States Government or any agency thereof."
+
+bibliographystyle:unsrt
+bibliography:lysinebiblio.bib
+
+
+
+
+* build					:noexport:
+
+simple manuscript: elisp:ox-manuscript-export-and-build-and-open
+
+submission manuscript: elisp:ox-manuscript-build-submission-manuscript-and-open
+
+archive: elisp:ox-manuscript-make-submission-archive
+
+file:manuscript.pdf

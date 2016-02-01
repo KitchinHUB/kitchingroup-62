@@ -1,0 +1,11 @@
+#+OPTIONS: toc:nil
+
+- We measure the \ce{CO2} absorption capacity of amino acid salts in a microfluidic device.
+
+- \ce{CO2} loading of absorbent solutions can be measured with <1 mL of sample in <1 hour.
+
+- \ce{CO2} loadings measured with microfluidic device are compared with CSTR measurements.
+
+- Salt of lysine absorbed >90% more \ce{CO2} on a per mole of amine/amino acid basis than MEA.
+
+- Raman spectroscopy was used to determine reaction products for each amino acid salt.
