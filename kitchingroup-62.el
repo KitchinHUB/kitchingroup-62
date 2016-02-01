@@ -23,7 +23,7 @@
 ;;  }
 
 ;;; Commentary:
-;; Note the SI contains some large videos.
+
 
 ;;; Code:
 (require 'cappa)
