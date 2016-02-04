@@ -1,4 +1,4 @@
-;;; kitchingroup-62.el --- CaPPA preprint for doi:
+;;; kitchingroup-62.el --- Comparative Microfluidic Screening of Amino Acid Salt Solutions for Post-Combustion \ce{CO2} Capture
 
 ;; Copyright (C) 2016 John Kitchin
 
